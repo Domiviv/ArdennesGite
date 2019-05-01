@@ -1,0 +1,13 @@
+<div>
+  <!-- <input name="username" type="text" value="{{username}}">
+  <br>
+  <input name="password" type="password" value="{{password}}">
+  <br> -->
+  <input name="username" type="text" [(ngModel)]="username">
+  <br>
+  <input name="password" type="password" [(ngModel)]="password">
+  <br>
+  <button (click)=handleBasicAuthLogin()>Login</button>
+</div>
+
+<div *ngIf="invalidLogin">Error : Bad Login</div>
