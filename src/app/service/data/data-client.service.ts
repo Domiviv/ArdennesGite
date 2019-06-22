@@ -33,4 +33,7 @@ export class DataClientService {
   addClient(client: any): Observable<any>{
     return this.http.post(`${API_URL}/client`,client);
   }
+  deleteClient(idclient: number){
+    return this.http.delete(`${API_URL}/clients/`+idclient);
+  }
 }

@@ -8,6 +8,7 @@
         <th>Code postal</th>
         <th>Tel</th>
         <th>État</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -25,6 +26,20 @@
             <ng-container *ngIf="client.blacklist < 0; else bonClientTemplate">blacklisté</ng-container>
             <ng-template #bonClientTemplate>bon client</ng-template>
           </ng-template>
+        </td>
+
+
+
+
+        <td>
+            <div class="row">
+                    <button class="btn btn-outline-danger" (click)="deleteUser(client.idclient)" type="submit">supprimer</button>
+                &nbsp;
+
+            </div>
+
+
+
         </td>
       </tr>
     </tbody>
