@@ -1,13 +1,21 @@
-<div>
-  <!-- <input name="username" type="text" value="{{username}}">
-  <br>
-  <input name="password" type="password" value="{{password}}">
-  <br> -->
-  <input name="username" type="text" [(ngModel)]="username">
-  <br>
-  <input name="password" type="password" [(ngModel)]="password">
-  <br>
-  <button (click)=handleBasicAuthLogin()>Login</button>
+<br>
+<div class="container">
+    <article class="card-body mx-auto" style="max-width: 400px;">
+      <h4 class="card-title mt-3 text-center">Connexion</h4>
+      <input name="usernfame" type="mail" [(ngModel)]="username" class="form-control" placeholder="Adresse email" required email>
+      <br>
+      <input name="password" type="password" [(ngModel)]="password" class="form-control" placeholder="Mot de passe" required>
+      <br>
+      <!-- Validation -->
+      <div class="form-group text-center">
+        <button class="btn btn-primary" (click)=handleBasicAuthLogin()>Se connecter</button>
+        <div *ngIf="invalidLogin" class="text-danger">Indentifiants incorrects</div>
+      </div>
+    </article>
+    <p class="text-center">Avez-vous déjà un compte? <a href="/signup">Créez-en un!</a> </p>  
+
 </div>
 
-<div *ngIf="invalidLogin">Error : Bad Login</div>
+
+
+

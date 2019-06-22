@@ -1,0 +1,76 @@
+<br>
+<div class="container">
+    <article class="card-body mx-auto" style="max-width: 400px;">
+      <h4 class="card-title mt-3 text-center">Inscription</h4>
+      <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" [mustMatch]="['mdp', 'mdpconf']" novalidate>
+        <!-- Nom -->
+        <div class="form-group input-group">
+          <input name="nom" class="form-control" placeholder="Nom" type="text" [(ngModel)]="model.nom" #nom="ngModel" [ngClass]="{ 'is-invalid': f.submitted && nom.invalid }" required>
+          <div *ngIf="f.submitted && nom.invalid" class="invalid-feedback">
+            <div *ngIf="nom.errors.required">Veuillez entrer un nom.</div>
+          </div>
+        </div>
+        
+        <!-- Prénom -->
+        <div class="form-group input-group">
+          <input name="prenom" class="form-control" placeholder="Prénom" type="text" [(ngModel)]="model.prenom" #prenom="ngModel" [ngClass]="{ 'is-invalid': f.submitted && prenom.invalid }" required>
+          <div *ngIf="f.submitted && prenom.invalid" class="invalid-feedback">
+            <div *ngIf="prenom.errors.required">Veuillez entrer un prénom.</div>
+          </div>
+        </div>
+          
+        <!-- Mail -->
+        <div class="form-group input-group">
+          <input name="email" class="form-control" placeholder="Mail" type="email" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email>
+          <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+            <div *ngIf="email.errors.required">Veuillez entrer un email.</div>
+            <div *ngIf="email.errors.email">Vous devez entrer un email valide.</div>
+          </div>
+        </div>
+        
+        <!-- Tel -->
+        <div class="form-group input-group">
+          <select class="custom-select" style="max-width: 80px;">
+            <option selected="">+32</option>
+          </select>
+          <input name="tel" class="form-control" placeholder="Téléphone" type="text" [(ngModel)]="model.tel" #tel="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tel.invalid }" required>
+          <div *ngIf="f.submitted && tel.invalid" class="invalid-feedback">
+            <div *ngIf="tel.errors.required">Veuillez entrer n° de téléphone.</div>
+          </div>
+        </div> 
+        
+        <!-- Code postal -->
+        <div class="form-group input-group">
+          <input name="cp" class="form-control" placeholder="Code postal" type="text" [(ngModel)]="model.cp" #cp="ngModel" [ngClass]="{ 'is-invalid': f.submitted && cp.invalid }" required>  
+          <div *ngIf="f.submitted && cp.invalid" class="invalid-feedback">
+            <div *ngIf="cp.errors.required">Veuillez entrer un code postal.</div>
+          </div>
+        </div> 
+
+        <!-- mdp -->
+        <div class="form-group input-group">
+          <input name="mdp" class="form-control" placeholder="Mot de passe" type="password" [(ngModel)]="model.mdp" #mdp="ngModel" [ngClass]="{ 'is-invalid': f.submitted && mdp.invalid }" required>  
+          <div *ngIf="f.submitted && mdp.invalid" class="invalid-feedback">
+            <div *ngIf="mdp.errors.required">Entrez un mot de passe.</div>
+          </div>
+        </div>
+        
+        <!-- Confirmation mdp -->
+        <div class="form-group input-group">
+          <input name="mdpconf" class="form-control" placeholder="Confirmation mot de passe" type="password" [(ngModel)]="model.mdpconf" #mdpconf="ngModel" [ngClass]="{ 'is-invalid': f.submitted && mdpconf.invalid }" required>  
+          <div *ngIf="f.submitted && mdpconf.invalid" class="invalid-feedback">
+            <div *ngIf="mdpconf.errors.required">Confirmez votre mot de passe</div>
+            <div *ngIf="mdpconf.errors.mustMatch">Les mots de passe ne correspondent pas</div>
+          </div>
+        </div>
+        
+        <!-- Validation -->
+        <div class="form-group text-center">
+          <button class="btn btn-primary">Créer un compte</button>
+        </div>
+        
+        <!-- Question -->      
+        <p class="text-center">Avez-vous déjà un compte? <a href="/login">Se connecter</a> </p>                                                                 
+      </form>
+    </article>
+  </div>

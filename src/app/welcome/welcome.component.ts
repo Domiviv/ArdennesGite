@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataClientService } from '../service/data/data-client.service';
+import { DataGiteService, Gite } from '../service/data/data-gite.service';
 
 @Component({
   selector: 'app-welcome',
@@ -8,24 +8,23 @@ import { DataClientService } from '../service/data/data-client.service';
 })
 export class WelcomeComponent implements OnInit {
   
-  constructor(private service:DataClientService) { }
+  constructor( private serviceGite:DataGiteService) { }
   //constructor() { }
 
-  //clients:Client[];
+  gites:Gite[];
 
   ngOnInit() {
+    this.getGites();
+    
   }
-
-  getClient(){
-    console.log('ok')
-      this.service.executeDataStudentService().subscribe(
-         response => this.handleSuccessfulResponse(response)
-       );
+  getGites(){
+      this.serviceGite.executeDataGiteService().subscribe(
+         response => this.handleGiteSuccessfulResponse(response)
+      );
   }
-
-  handleSuccessfulResponse(response){
+  handleGiteSuccessfulResponse(response){
     console.log(response._embedded);
-    //this.students = response._embedded.etudiants;
+    this.gites = response._embedded.giteResources;
   }
 
 }

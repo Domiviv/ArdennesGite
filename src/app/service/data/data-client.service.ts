@@ -1,10 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { API_URL } from 'src/app/app.constants';
+import { Observable } from 'rxjs';
 
 
 
-  export class Student{
+  export class Client{
+    idclient: number;
+    prenom: string;
+    nom: string;
+    email: string;
+    tel: string;
+    cp: string;
+    mdp: string;
+    blacklist: number;
     constructor() {}
   }
 
@@ -17,19 +26,11 @@ export class DataClientService {
 
   constructor(private http:HttpClient) { }
 
-  executeDataStudentService(){
+  executeDataClientService(){
      //Création headers
-     let basicAuthHeaderString = this.createBasicAuthenticationHttpHeader();
-     let headers = new HttpHeaders({
-        Authorization: basicAuthHeaderString
-      })
-     return this.http.get(`${API_URL}/client`,{headers});
+     return this.http.get(`${API_URL}/client`);
   }
-    //Create header
-  createBasicAuthenticationHttpHeader() {
-     let username = 'vivien'
-     let password = 'yolo'
-     let basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password);
-     return basicAuthHeaderString;
+  addClient(client: any): Observable<any>{
+    return this.http.post(`${API_URL}/client`,client);
   }
 }

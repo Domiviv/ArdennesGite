@@ -3,20 +3,17 @@ import { BasicAuthenticationService } from '../service/basic-authentication.serv
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  selector: 'app-logout',
+  templateUrl: './logout.component.html',
+  styleUrls: ['./logout.component.css']
 })
-export class MenuComponent implements OnInit {
+export class LogoutComponent implements OnInit {
 
   constructor(private router:Router, private basicauthentication:BasicAuthenticationService) { }
 
   ngOnInit() {
-  }
-  logout(){
     this.basicauthentication.logout();
-    this.router.navigate(['welcome']);
+    this.router.navigate(['welcome'])
   }
-  shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../service/authentication.service';
 import { BasicAuthenticationService } from '../service/basic-authentication.service';
 
 @Component({
@@ -9,29 +8,20 @@ import { BasicAuthenticationService } from '../service/basic-authentication.serv
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username='Username';
+  username='';
   password='';
   invalidLogin:boolean=false;
   
-  constructor(private router:Router, private authentication:AuthenticationService, private basicauthentication:BasicAuthenticationService){ }
+  constructor(private router:Router, private basicauthentication:BasicAuthenticationService){ }
 
   ngOnInit() {
-  }
-  handleLogin(){
-    if(this.authentication.authenticate(this.username,this.password)){
-      this.router.navigate(['welcome']);
-      this.invalidLogin=false;
-    }
-    else{
-      this.invalidLogin=true;
-    }
   }
 
   handleBasicAuthLogin() {
 
     console.log("auth")
 
-    this.basicauthentication.executeAuthenticationService(this.username, this.password)
+    this.basicauthentication.executeJWTAuthenticationService(this.username, this.password)
 
       .subscribe(
 
@@ -39,7 +29,7 @@ export class LoginComponent implements OnInit {
 
           console.log(data)
 
-          this.router.navigate(['welcome', this.username])
+          this.router.navigate(['welcome'])
 
           this.invalidLogin = false
 

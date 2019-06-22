@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorComponent } from './error/error.component';
@@ -10,6 +11,11 @@ import { MenuComponent } from './menu/menu.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpIntercepterBasicAuthService } from './service/http-intercepter-basic-auth-service.service.spec';
+import { SignupComponent } from './signup/signup.component';
+import { MustMatchDirective } from './_helpers/must-match.directive';
+import { GestionClientsComponent } from './gestion-clients/gestion-clients.component';
+import { GestionGitesComponent } from './gestion-gites/gestion-gites.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
@@ -19,13 +25,19 @@ import { HttpIntercepterBasicAuthService } from './service/http-intercepter-basi
     FooterComponent,
     LoginComponent,
     MenuComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    SignupComponent,
+    MustMatchDirective,
+    GestionClientsComponent,
+    GestionGitesComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [
     {
