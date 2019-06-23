@@ -1,3 +1,23 @@
-<p>
-  gestion-gites works!
-</p>
+<div class="container-fluid">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>Libelle</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let gite of gites">
+        <td>{{gite.libelle}}</td>
+
+        <!-- bouton supprimer-->
+        <td>
+          <div class="row">
+            <button class="btn btn-outline-danger" (click)="deleteGite(gite.idgite)" type="submit">supprimer</button>
+            &nbsp;
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

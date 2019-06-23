@@ -27,19 +27,12 @@
             <ng-template #bonClientTemplate>bon client</ng-template>
           </ng-template>
         </td>
-
-
-
-
+        <!-- bouton supprimer sauf pour utilisateur connecté-->
         <td>
-            <div class="row">
-                    <button class="btn btn-outline-danger" (click)="deleteUser(client.idclient)" type="submit">supprimer</button>
-                &nbsp;
-
-            </div>
-
-
-
+          <div class="row">
+            <button *ngIf="client.email != basicauthentication.getAuthenticatedUser()" class="btn btn-outline-danger" (click)="deleteUser(client.idclient, client.email)" type="submit">supprimer</button>
+            &nbsp;
+          </div>
         </td>
       </tr>
     </tbody>

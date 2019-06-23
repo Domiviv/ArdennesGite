@@ -24,4 +24,7 @@ export class DataGiteService {
   executeDataGiteService(){
      return this.http.get(`${API_URL}/gite`);
   }
+  deleteGite(idgite: number){
+    return this.http.delete(`${API_URL}/gites/`+idgite);
+  }
 }

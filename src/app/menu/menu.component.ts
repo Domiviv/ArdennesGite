@@ -17,6 +17,5 @@ export class MenuComponent implements OnInit {
     this.basicauthentication.logout();
     this.router.navigate(['welcome']);
   }
-  shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 
 }

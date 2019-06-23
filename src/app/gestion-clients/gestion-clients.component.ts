@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataClientService, Client } from '../service/data/data-client.service';
+import { BasicAuthenticationService } from '../service/basic-authentication.service';
 
 @Component({
   selector: 'app-gestion-clients',
@@ -8,7 +9,7 @@ import { DataClientService, Client } from '../service/data/data-client.service';
 })
 export class GestionClientsComponent implements OnInit {
 
-  constructor(private serviceClient:DataClientService) { }
+  constructor(private serviceClient:DataClientService, private basicauthentication:BasicAuthenticationService) { }
   clients:Client[];
 
   ngOnInit() {
@@ -20,9 +21,9 @@ export class GestionClientsComponent implements OnInit {
     console.log(response._embedded);
     this.clients = response._embedded.clientResources;
   }
-  deleteUser(idclient: number){
+  deleteUser(idclient: number, email: string){
     // Demande de confirmation de suppression
-    if (confirm('Êtes-vous sur de vouloir supprimer ce client?')) {
+    if (email != this.basicauthentication.getAuthenticatedUser() && confirm('Êtes-vous sur de vouloir supprimer ce client?')) {
       // Suppression 
       this.serviceClient.deleteClient(idclient).subscribe(res => {
         // console.log(idclient + 'est supprimé');
@@ -31,6 +32,8 @@ export class GestionClientsComponent implements OnInit {
           response => this.handleClientSuccessfulResponse(response)
         );
       });
+    } else if( email == this.basicauthentication.getAuthenticatedUser()){
+      console.log("You can't remove an authenticated user");
     }
   }
 
