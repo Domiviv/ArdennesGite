@@ -8,6 +8,8 @@ import { GestionClientsComponent } from './gestion-clients/gestion-clients.compo
 import { GestionGitesComponent } from './gestion-gites/gestion-gites.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ProfileComponent } from './profile/profile.component';
+import { EditionGiteComponent } from './gestion-gites/edition-gite/edition-gite.component';
+
 
 
 
@@ -21,6 +23,7 @@ const routes: Routes = [
   {path : 'gestion-clients', component : GestionClientsComponent},
   {path : 'gestion-gites', component : GestionGitesComponent},
   {path : 'profile', component : ProfileComponent},
+  {path : 'edition-gite', component : EditionGiteComponent},
   {path : '**', component : ErrorComponent}
   
 ];

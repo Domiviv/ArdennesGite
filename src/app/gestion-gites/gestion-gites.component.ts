@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataGiteService, Gite } from '../service/data/data-gite.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gestion-gites',
@@ -7,7 +8,7 @@ import { DataGiteService, Gite } from '../service/data/data-gite.service';
   styleUrls: ['./gestion-gites.component.css']
 })
 export class GestionGitesComponent implements OnInit {
-  constructor(private serviceGite:DataGiteService) { }
+  constructor(private serviceGite:DataGiteService, private router:Router) { }
   gites:Gite[];
 
   ngOnInit() {
@@ -31,5 +32,9 @@ export class GestionGitesComponent implements OnInit {
         );
       });
     }
+  }
+  editGite(idgite: number){
+    sessionStorage.idgite=idgite;
+    this.router.navigate(['edition-gite']);
   }
 }

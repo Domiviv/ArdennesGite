@@ -15,9 +15,12 @@
           <div class="row">
             <button class="btn btn-outline-danger" (click)="deleteGite(gite.idgite)" type="submit">supprimer</button>
             &nbsp;
+            <button class="btn btn-outline-warning" (click)="editGite(gite.idgite)" type="submit">éditer</button>
           </div>
         </td>
       </tr>
     </tbody>
   </table>
+  &nbsp;
+  <button class="btn btn-outline-success" routerLink="/ajout-gite" type="submit">Ajouter un gite</button>
 </div>
