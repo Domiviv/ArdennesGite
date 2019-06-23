@@ -7,6 +7,7 @@ import { SignupComponent } from './signup/signup.component';
 import { GestionClientsComponent } from './gestion-clients/gestion-clients.component';
 import { GestionGitesComponent } from './gestion-gites/gestion-gites.component';
 import { LogoutComponent } from './logout/logout.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path : 'signup', component : SignupComponent},
   {path : 'gestion-clients', component : GestionClientsComponent},
   {path : 'gestion-gites', component : GestionGitesComponent},
+  {path : 'profile', component : ProfileComponent},
   {path : '**', component : ErrorComponent}
   
 ];

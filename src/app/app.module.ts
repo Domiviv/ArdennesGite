@@ -16,6 +16,7 @@ import { MustMatchDirective } from './_helpers/must-match.directive';
 import { GestionClientsComponent } from './gestion-clients/gestion-clients.component';
 import { GestionGitesComponent } from './gestion-gites/gestion-gites.component';
 import { LogoutComponent } from './logout/logout.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { LogoutComponent } from './logout/logout.component';
     GestionClientsComponent,
     GestionGitesComponent,
     LogoutComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

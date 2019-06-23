@@ -4,7 +4,8 @@ import { map } from 'rxjs/operators';
 import { API_URL } from '../app.constants';
 
 export const TOKEN = 'token'
-export const AUTHENTICATED_USER = 'authenticaterUser'
+export const AUTHENTICATED_USER = 'authenticatedUser'
+export const USER_ID = 'id';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +45,7 @@ export class BasicAuthenticationService {
             console.log(data);
             sessionStorage.setItem(AUTHENTICATED_USER, username);
             sessionStorage.setItem(TOKEN, `Bearer ${data.token}`);
+            //sessionStorage.setItem(USER_ID, `${data.id}`);
             return data;
           }
         )
@@ -54,7 +56,10 @@ export class BasicAuthenticationService {
 
 
   getAuthenticatedUser() {
-    return sessionStorage.getItem('authenticaterUser')
+    return sessionStorage.getItem('authenticatedUser')
+  }
+  getAuthenticatedUserId(){
+    return sessionStorage.getItem('id')
   }
 
   getAuthenticatedToken() {
@@ -66,12 +71,12 @@ export class BasicAuthenticationService {
 
 
   isUserLoggedIn() {
-    let user = sessionStorage.getItem('authenticaterUser')
+    let user = sessionStorage.getItem('authenticatedUser')
     return !(user === null)
   }
 
   logout() {
-    sessionStorage.removeItem('authenticaterUser')
+    sessionStorage.removeItem('authenticatedUser')
     sessionStorage.removeItem('token')
   }
 }

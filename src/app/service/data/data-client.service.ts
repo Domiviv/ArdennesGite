@@ -36,4 +36,8 @@ export class DataClientService {
   deleteClient(idclient: number){
     return this.http.delete(`${API_URL}/clients/`+idclient);
   }
+  getByAuthenticatedUser(authenticatedUser: string){
+
+    return this.http.get(`${API_URL}/client/?email=`+authenticatedUser);
+  }
 }

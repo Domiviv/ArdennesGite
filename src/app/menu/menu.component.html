@@ -7,16 +7,18 @@
     <ul class="navbar-nav">
       <!-- Partie gauche -->
       <li class="nav-item">
-        <a routerLink="/gestion-clients" class="nav-link">gérer les clients</a>
+        <a *ngIf="basicauthentication.isUserLoggedIn()" routerLink="/gestion-clients" class="nav-link">gérer les clients</a>
       </li>
       <li class="nav-item">
-        <a routerLink="/gestion-gites" class="nav-link">gérer les gites</a>
+        <a *ngIf="basicauthentication.isUserLoggedIn()" routerLink="/gestion-gites" class="nav-link">gérer les gites</a>
       </li>
     </ul>
   </div>
   <!-- Partie droite -->
   <a *ngIf="!basicauthentication.isUserLoggedIn()" routerLink="/login" class="nav-link btn btn-outline-light">se connecter</a>
   &nbsp;
-  <a *ngIf="!basicauthentication.isUserLoggedIn()" routerLink="/signup" class="nav-link btn btn-outline-light">s'inscrire</a>    
-  <a *ngIf="basicauthentication.isUserLoggedIn()" routerLink="/logout" class="nav-link btn btn-outline-light" (click)=logout()>se déconnecter</a>
+  <a *ngIf="!basicauthentication.isUserLoggedIn()" routerLink="/signup" class="nav-link btn btn-outline-light">s'inscrire</a>
+  <a *ngIf="basicauthentication.isUserLoggedIn()" routerLink="/profile" class="nav-link btn btn-outline-light">profil</a>
+  &nbsp;    
+  <a *ngIf="basicauthentication.isUserLoggedIn()" routerLink="" class="nav-link btn btn-outline-light" (click)=logout()>se déconnecter</a>
 </nav> 
