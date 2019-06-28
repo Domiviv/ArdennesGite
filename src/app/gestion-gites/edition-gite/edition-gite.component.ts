@@ -13,9 +13,13 @@ export class EditionGiteComponent implements OnInit {
   @Input() gite: Gite;
   ngOnInit() {
     this.serviceGite.getGiteById(sessionStorage.idgite).subscribe(
-      gite => this.gite = gite
+      gite => {
+      this.gite = gite;
+      console.log(this.gite);
+    }
+      
     );
-    console.log(this.gite);
+    
   }
 
 }
